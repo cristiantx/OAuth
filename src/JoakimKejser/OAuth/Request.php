@@ -35,7 +35,7 @@ class Request
     public static function createFromRequest(SymfonyRequest $symfonyRequest, $httpMethod = null, $httpUrl = null, $parameters = null)
     {
         $httpUrl = ($httpUrl) ? $httpUrl : $symfonyRequest->getSchemeAndHttpHost() . $symfonyRequest->getRequestUri();
-        $httpMethod = ($httpMethod) ? $httpMethod : $symfonyRequest->getMethod();
+        $httpMethod = ($httpMethod) ? $httpMethod : $symfonyRequest->server->get('REQUEST_METHOD', 'GET');
 
         // We weren't handed any parameters, so let's find the ones relevant to
         // this request.
